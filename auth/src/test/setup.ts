@@ -11,7 +11,7 @@ let mongo: any;
 beforeAll(async () => {
   process.env.jwt = "secret";
 
-  const mongo = await MongoMemoryServer.create();
+  mongo = await MongoMemoryServer.create();
   const mongoUri = mongo.getUri();
 
   await mongoose.connect(mongoUri, {});
@@ -35,6 +35,9 @@ afterAll(async () => {
 global.signin = async () => {
   const email = "test@test.com";
   const password = "password";
+
+  // Clear cookies before each test
+  await request(app).get("/api/users/signout");
 
   const response = await request(app)
     .post("/api/users/signup")
