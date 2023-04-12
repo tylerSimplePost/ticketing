@@ -10,6 +10,7 @@ import { PaymentCreatedListener } from "./events/listeners/payment-created-liste
 import { ExpirationCompleteListener } from "./events/listeners/expiration-complete-listener";
 
 const start = async () => {
+  console.log("running");
   if (!process.env.jwt) {
     throw new Error("JWT KEY NOT DEFINED");
   }
