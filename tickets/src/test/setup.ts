@@ -16,7 +16,7 @@ beforeAll(async () => {
   jest.clearAllMocks();
   process.env.jwt = "secret";
 
-  const mongo = await MongoMemoryServer.create();
+  mongo = await MongoMemoryServer.create();
   const mongoUri = mongo.getUri();
 
   await mongoose.connect(mongoUri, {});
