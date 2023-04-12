@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: port-forward-pod
+  labels:
+    app: port-forward
+spec:
+  containers:
+    - name: port-forward-container
+      image: gcr.io/cloud-builders/kubectl:latest
+      command:
+        - kubectl
+      args:
+        - port-forward
+        - svc/client-srv
+        - 3000:80
+      resources:
+        limits:
+          cpu: 100m
+          memory: 128Mi
+        requests:
+          cpu: 50m
+          memory: 64Mi
