@@ -17,7 +17,7 @@ export const useCurrentUserStore = defineStore({
     },
     async fetchCurrentUser() {
       const url = process.server
-        ? "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/users/currentuser"
+        ? "http://ticketing-app-prod.us/"
         : "/api/users/currentuser";
 
       const { data, error } = await useFetch(url, {
